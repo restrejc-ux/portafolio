@@ -209,7 +209,7 @@
                 </div>
                 <div class="flex items-center justify-between py-2">
                   <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i> Correo Directo</span>
-                  <a href="mailto:restrejcjob@gmail.com" class="font-semibold text-brand-400 hover:underline">restrejcjob@gmail.com</a>
+                  <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="font-semibold text-brand-400 hover:underline">restrejcjob@gmail.com</a>
                 </div>
               </div>
 
@@ -732,13 +732,13 @@
 
         <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
           <p>
-            Soy **Julio Cesar Restrepo Hernandez**, un apasionado del marketing y la estrategia digital con un enfoque orientado a resultados reales. Me defino como un profesional **responsable, con un alto sentido de colaboración, de rápido aprendizaje y con facilidad de integración a equipos dinámicos**.
+            Soy <strong class="text-zinc-100 font-semibold">Julio Cesar Restrepo Hernandez</strong>, un apasionado del marketing y la estrategia digital con un enfoque orientado a resultados reales. Me defino como un profesional <strong class="text-zinc-100 font-semibold">responsable, con un alto sentido de colaboración, de rápido aprendizaje y con facilidad de integración a equipos dinámicos</strong>.
           </p>
           <p>
-            Mi trayectoria combina una sólida base en **atención y servicio al cliente**, lo que me permite entender a fondo la psicología del comprador colombiano, anticipar objeciones y estructurar ofertas irresistibles tanto en el contenido como en los embudos de pauta publicitaria.
+            Mi trayectoria combina una sólida base en <strong class="text-zinc-100 font-semibold">atención y servicio al cliente</strong>, lo que me permite entender a fondo la psicología del comprador colombiano, anticipar objeciones y estructurar ofertas irresistibles tanto en el contenido como en los embudos de pauta publicitaria.
           </p>
           <p>
-            Mi especialidad central y experiencia continua es el **E-commerce y Dropshipping masivo** en Colombia (con amplio dominio de Meta Ads, TikTok Ads y Pancake CRM), pero al mismo tiempo **diseño y ejecuto campañas de adquisición y posicionamiento de alto rendimiento para empresas de servicios, formación y marcas corporativas**.
+            Mi especialidad central y experiencia continua es el <strong class="text-zinc-100 font-semibold">E-commerce y Dropshipping masivo</strong> en Colombia (con amplio dominio de Meta Ads, TikTok Ads y Pancake CRM), pero al mismo tiempo <strong class="text-zinc-100 font-semibold">diseño y ejecuto campañas de adquisición y posicionamiento de alto rendimiento para empresas de servicios, formación y marcas corporativas</strong>.
           </p>
           <p>
             Cierro la brecha entre la creatividad y los números: no solo creo contenido visualmente atractivo y guiones que enganchan en los primeros segundos, sino que administro la infraestructura técnica, audito las métricas diarias y optimizo cada peso invertido para asegurar rentabilidad.
@@ -777,7 +777,7 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-3">
-            <a href="mailto:restrejcjob@gmail.com" class="px-5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 font-semibold text-xs transition-all flex items-center gap-2">
+            <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="px-5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 font-semibold text-xs transition-all flex items-center gap-2">
               <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
               <span>Enviar Correo</span>
             </a>
@@ -810,7 +810,7 @@
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>WhatsApp: +57 304 595 4077</span>
         </a>
-        <a href="mailto:restrejcjob@gmail.com" class="px-8 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-sm hover:bg-zinc-800 transition-all flex items-center gap-3">
+        <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="px-8 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-sm hover:bg-zinc-800 transition-all flex items-center gap-3">
           <i data-lucide="mail" class="w-5 h-5 text-brand-400"></i>
           <span>restrejcjob@gmail.com</span>
         </a>
@@ -885,6 +885,33 @@
       document.getElementById('metric-cpr-sub').textContent = d.cprSub;
       document.getElementById('metric-ventas').textContent = d.ventas;
       document.getElementById('metric-ventas-sub').textContent = d.ventasSub;
+    }
+  </script>
+
+
+  <!-- Toast Notification for Email -->
+  <div id="email-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none p-4 rounded-2xl bg-zinc-900 border border-brand-500/30 text-white shadow-2xl flex items-center gap-3">
+    <div class="p-2 rounded-xl bg-brand-500/10 text-brand-400">
+      <i data-lucide="mail-check" class="w-5 h-5"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-bold">Abriendo cliente de correo...</h5>
+      <p class="text-[11px] text-zinc-400">Dirección copiada: <span class="text-brand-400 font-medium">restrejcjob@gmail.com</span></p>
+    </div>
+  </div>
+
+  <script>
+    function handleEmailClick(e) {
+      // Copy to clipboard as reliable backup
+      navigator.clipboard.writeText('restrejcjob@gmail.com').catch(()=>{});
+      
+      const toast = document.getElementById('email-toast');
+      if (toast) {
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 4000);
+      }
     }
   </script>
 

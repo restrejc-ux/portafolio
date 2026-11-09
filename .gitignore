@@ -1,0 +1,10 @@
+# Archivos confidenciales y grandes
+*.xlsx
+*.xls
+Reporte_Metricas_Tiendas_*.csv
+Mes de Octubre Logi/Reporte_Metricas_Tiendas_Octubre_2026.csv
+mes de Septiembre logi/Reporte_Metricas_Tiendas_01-09-2026_to_30-09-2026.csv
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

@@ -2,7 +2,11 @@
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#09090b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
   <title>Julio Cesar Restrepo | Estratega Digital, Marketer & Lead Media Buyer</title>
   <meta name="description" content="Portafolio profesional de Julio Cesar Restrepo Hernandez: Marketer & Estratega Digital especializado en E-commerce, Dropshipping y Empresas de Servicios en Colombia. +$527M COP gestionados en pauta publicitaria.">
   
@@ -25,6 +29,9 @@
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
+          screens: {
+            'xs': '400px',
+          },
           colors: {
             brand: {
               50: '#eff6ff',
@@ -44,8 +51,28 @@
   </script>
   
   <style>
+    /* Mobile & Cross-device CSS Resets */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw;
+      width: 100%;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .touch-scroll {
+      -webkit-overflow-scrolling: touch;
+    }
     .glass-card {
-      background: rgba(24, 24, 27, 0.7);
+      background: rgba(24, 24, 27, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -66,103 +93,148 @@
       70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
       100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
     }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 
-<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-brand-500 selection:text-white min-h-screen">
+<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-brand-500 selection:text-white min-h-screen relative">
 
   <!-- Glow Background Effect -->
-  <div class="fixed top-0 left-0 right-0 h-[600px] glow-bg pointer-events-none -z-10"></div>
+  <div class="fixed top-0 left-0 right-0 h-[500px] sm:h-[600px] glow-bg pointer-events-none -z-10"></div>
 
   <!-- NAVIGATION -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-zinc-950/80 border-b border-zinc-800/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-zinc-950/85 border-b border-zinc-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-base sm:text-lg shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
           JR
         </div>
-        <div>
-          <span class="font-bold text-lg text-white tracking-tight flex items-center gap-2">
-            Julio Cesar Restrepo <span class="text-xs px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 font-medium">Estratega Digital</span>
+        <div class="min-w-0">
+          <span class="font-bold text-sm sm:text-lg text-white tracking-tight flex items-center gap-1.5 truncate">
+            <span class="truncate">Julio Restrepo</span>
+            <span class="hidden md:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 font-medium">Estratega Digital</span>
           </span>
-          <p class="text-xs text-zinc-400">Marketer | Media Buyer & Growth</p>
+          <p class="text-[10px] sm:text-xs text-zinc-400 truncate">Marketer | Media Buyer & Growth</p>
         </div>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-zinc-400">
         <a href="#metricas" class="hover:text-white transition-colors">Métricas & Escala</a>
         <a href="#casos" class="hover:text-white transition-colors">Casos de Éxito</a>
         <a href="#herramientas" class="hover:text-white transition-colors">Herramientas & Skills</a>
         <a href="#sobre-mi" class="hover:text-white transition-colors">Sobre Mí</a>
       </nav>
 
-      <div class="flex items-center gap-3">
+      <!-- Action Buttons & Mobile Hamburger -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         <!-- LinkedIn Link -->
-        <a href="https://www.linkedin.com/in/julio-cesar-restrepo-hernandez-3b6829243/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 transition-all flex items-center gap-1.5 text-xs font-semibold" title="Ver perfil de LinkedIn">
+        <a href="https://www.linkedin.com/in/julio-cesar-restrepo-hernandez-3b6829243/" target="_blank" rel="noopener noreferrer" class="p-2 sm:p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 transition-all flex items-center gap-1.5 text-xs font-semibold" title="Ver perfil de LinkedIn">
           <i data-lucide="linkedin" class="w-4 h-4 text-brand-400"></i>
-          <span class="hidden sm:inline">LinkedIn</span>
+          <span class="hidden lg:inline">LinkedIn</span>
         </a>
 
-        <!-- WhatsApp Link -->
-        <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold text-sm hover:from-emerald-500 hover:to-teal-500 transition-all shadow-lg shadow-emerald-600/25 hover:shadow-emerald-500/40">
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span>WhatsApp</span>
+        <!-- WhatsApp Link (compact on mobile) -->
+        <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold text-xs sm:text-sm hover:from-emerald-500 hover:to-teal-500 transition-all shadow-md shadow-emerald-600/20">
+          <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
+          <span class="hidden xs:inline">WhatsApp</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
+          <i id="mobile-menu-icon" data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-drawer" class="hidden md:hidden border-t border-zinc-800/80 bg-zinc-950/95 backdrop-blur-2xl px-5 py-4 space-y-3 transition-all duration-300">
+      <nav class="flex flex-col space-y-2.5 text-sm font-semibold text-zinc-300">
+        <a href="#metricas" onclick="closeMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2.5">
+          <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-400"></i> Métricas & Escala
+        </a>
+        <a href="#casos" onclick="closeMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2.5">
+          <i data-lucide="film" class="w-4 h-4 text-purple-400"></i> Casos de Éxito
+        </a>
+        <a href="#herramientas" onclick="closeMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2.5">
+          <i data-lucide="cpu" class="w-4 h-4 text-emerald-400"></i> Herramientas & Skills
+        </a>
+        <a href="#sobre-mi" onclick="closeMobileMenu()" class="py-2 px-3 rounded-lg hover:bg-zinc-900 hover:text-white transition-colors flex items-center gap-2.5">
+          <i data-lucide="user" class="w-4 h-4 text-rose-400"></i> Sobre Mí
+        </a>
+      </nav>
+
+      <div class="pt-3 border-t border-zinc-800/80 grid grid-cols-2 gap-2 text-center text-xs">
+        <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event); closeMobileMenu();" class="py-2.5 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-200 font-bold flex items-center justify-center gap-1.5">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-400"></i> Correo
+        </a>
+        <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" onclick="closeMobileMenu()" class="py-2.5 px-3 rounded-xl bg-emerald-500 text-zinc-950 font-bold flex items-center justify-center gap-1.5">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
         </a>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+  <section class="relative pt-8 pb-14 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
         
         <!-- Hero Text -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 badge-pulse"></span>
-            Especialista en Mercado Colombia (E-commerce & Servicios)
+          <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] sm:text-xs font-semibold max-w-full truncate">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 badge-pulse shrink-0"></span>
+            <span class="truncate">Especialista en Mercado Colombia (E-commerce & Servicios)</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-            Estrategia, pauta masiva y <br>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.12]">
+            Estrategia, pauta masiva y <br class="hidden sm:inline">
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-rose-400">conversión rentable</span> para marcas y servicios.
           </h1>
 
-          <p class="text-base sm:text-lg text-zinc-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-            Soy <strong>Julio Cesar Restrepo</strong>. Especialista en escalado de <strong>E-commerce y Dropshipping</strong> en Colombia, y estratega en adquisición de clientes para <strong>empresas de servicios</strong>. Domino el embudo completo: blindaje y contingencias, producción de video (Filmmaking), pauta masiva y cierre comercial.
+          <p class="text-sm sm:text-base lg:text-lg text-zinc-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+            Soy <strong class="text-white">Julio Cesar Restrepo</strong>. Especialista en escalado de <strong class="text-white">E-commerce y Dropshipping</strong> en Colombia, y estratega en adquisición de clientes para <strong class="text-white">empresas de servicios</strong>. Domino el embudo completo: blindaje y contingencias, producción de video (Filmmaking), pauta masiva y cierre comercial.
           </p>
 
-          <!-- Quick Metrics Bar -->
-          <div class="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto lg:mx-0">
-            <div class="p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
-              <span class="block text-2xl font-bold text-white tracking-tight">+$527M</span>
-              <span class="text-xs text-zinc-400">COP Gestionados (2 Meses)</span>
+          <!-- Quick Metrics Bar (Responsive 2x2 on mobile, 4 columns on desktop) -->
+          <div class="pt-1 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 max-w-2xl mx-auto lg:mx-0">
+            <div class="p-3 sm:p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
+              <span class="block text-xl sm:text-2xl font-bold text-white tracking-tight">+$527M</span>
+              <span class="text-[11px] sm:text-xs text-zinc-400 leading-tight block mt-0.5">COP Pauta (2 Meses)</span>
             </div>
-            <div class="p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
-              <span class="block text-2xl font-bold text-emerald-400 tracking-tight">+782K</span>
-              <span class="text-xs text-zinc-400">Leads / Mensajes CRM</span>
+            <div class="p-3 sm:p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
+              <span class="block text-xl sm:text-2xl font-bold text-emerald-400 tracking-tight">+782K</span>
+              <span class="text-[11px] sm:text-xs text-zinc-400 leading-tight block mt-0.5">Leads / Mensajes CRM</span>
             </div>
-            <div class="p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
-              <span class="block text-2xl font-bold text-blue-400 tracking-tight">$656</span>
-              <span class="text-xs text-zinc-400">COP CPR Promedio Global</span>
+            <div class="p-3 sm:p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
+              <span class="block text-xl sm:text-2xl font-bold text-blue-400 tracking-tight">$656</span>
+              <span class="text-[11px] sm:text-xs text-zinc-400 leading-tight block mt-0.5">COP CPR Promedio</span>
             </div>
-            <div class="p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
-              <span class="block text-2xl font-bold text-purple-400 tracking-tight">37-57</span>
-              <span class="text-xs text-zinc-400">Tiendas Simultáneas</span>
+            <div class="p-3 sm:p-3.5 rounded-xl bg-zinc-900/70 border border-zinc-800 text-left">
+              <span class="block text-xl sm:text-2xl font-bold text-purple-400 tracking-tight">37-57</span>
+              <span class="text-[11px] sm:text-xs text-zinc-400 leading-tight block mt-0.5">Tiendas en Simultáneo</span>
             </div>
           </div>
 
-          <!-- CTAs -->
-          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/20">
-              <i data-lucide="message-circle" class="w-4 h-4 text-zinc-950"></i>
+          <!-- CTAs (Full-width on mobile, auto on desktop) -->
+          <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
+            <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 text-center">
+              <i data-lucide="message-circle" class="w-4 h-4 text-zinc-950 shrink-0"></i>
               <span>Escríbeme por WhatsApp</span>
             </a>
-            <a href="#metricas" class="px-6 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold text-sm hover:bg-zinc-800 hover:text-white transition-all flex items-center gap-2">
-              <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-400"></i>
+            <a href="#metricas" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold text-sm hover:bg-zinc-800 hover:text-white transition-all flex items-center justify-center gap-2 text-center">
+              <i data-lucide="bar-chart-3" class="w-4 h-4 text-brand-400 shrink-0"></i>
               <span>Ver Métricas Reales</span>
             </a>
           </div>
@@ -170,14 +242,14 @@
         </div>
 
         <!-- Profile Card Visual -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-sm sm:max-w-md">
+        <div class="lg:col-span-5 flex justify-center w-full">
+          <div class="relative w-full max-w-xs sm:max-w-md">
             <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-brand-500 to-rose-500 opacity-20 blur-xl"></div>
             
-            <div class="relative rounded-3xl glass-card overflow-hidden p-6 space-y-6">
+            <div class="relative rounded-3xl glass-card overflow-hidden p-4 sm:p-6 space-y-5 sm:space-y-6">
               
               <!-- Photo -->
-              <div class="relative h-72 sm:h-80 rounded-2xl overflow-hidden bg-zinc-900">
+              <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden bg-zinc-900">
                 <img 
                   src="assets/images/julio_perfil.jpg" 
                   alt="Julio Cesar Restrepo Hernandez" 
@@ -185,12 +257,12 @@
                 >
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
                 
-                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <div class="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-white">
                   <div>
-                    <h3 class="font-bold text-lg">Julio Cesar Restrepo H.</h3>
-                    <p class="text-xs text-zinc-300">Marketer & Estratega Digital</p>
+                    <h3 class="font-bold text-base sm:text-lg">Julio Cesar Restrepo H.</h3>
+                    <p class="text-[11px] sm:text-xs text-zinc-300">Marketer & Estratega Digital</p>
                   </div>
-                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-emerald-400">
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-semibold text-emerald-400">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                     Colombia 🇨🇴
                   </div>
@@ -198,18 +270,18 @@
               </div>
 
               <!-- Quick Info List -->
-              <div class="space-y-3 text-xs">
-                <div class="flex items-center justify-between py-2 border-b border-zinc-800/80">
-                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-brand-400"></i> Enfoque Central</span>
-                  <span class="font-semibold text-zinc-200">E-commerce, Dropshipping & Servicios</span>
+              <div class="space-y-2.5 text-xs">
+                <div class="flex items-center justify-between py-1.5 border-b border-zinc-800/80">
+                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-brand-400 shrink-0"></i> Enfoque Central</span>
+                  <span class="font-semibold text-zinc-200 text-right truncate">E-com, Dropshipping & Servicios</span>
                 </div>
-                <div class="flex items-center justify-between py-2 border-b border-zinc-800/80">
-                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-purple-400"></i> Pauta & Tráfico</span>
-                  <span class="font-semibold text-zinc-200">Meta Ads + TikTok Ads</span>
+                <div class="flex items-center justify-between py-1.5 border-b border-zinc-800/80">
+                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-purple-400 shrink-0"></i> Pauta & Tráfico</span>
+                  <span class="font-semibold text-zinc-200 text-right">Meta Ads + TikTok Ads</span>
                 </div>
-                <div class="flex items-center justify-between py-2">
-                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i> Correo Directo</span>
-                  <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="font-semibold text-brand-400 hover:underline">restrejcjob@gmail.com</a>
+                <div class="flex items-center justify-between py-1.5">
+                  <span class="text-zinc-400 flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-emerald-400 shrink-0"></i> Correo Directo</span>
+                  <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="font-semibold text-brand-400 hover:underline truncate max-w-[160px] sm:max-w-none">restrejcjob@gmail.com</a>
                 </div>
               </div>
 
@@ -222,50 +294,50 @@
   </section>
 
   <!-- TECH STACK & TOOLS SECTION -->
-  <section id="herramientas" class="py-12 bg-zinc-900/60 border-y border-zinc-800/80">
+  <section id="herramientas" class="py-10 sm:py-14 bg-zinc-900/60 border-y border-zinc-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-center text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-6">
+      <p class="text-center text-[11px] sm:text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-6">
         Ecosistema de Software & Herramientas que Domino en el Día a Día
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-        <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 transition-all">
-          <i data-lucide="layout-grid" class="w-5 h-5 text-blue-400"></i>
-          <div>
-            <span class="block text-xs font-bold text-white">Meta Ads Manager</span>
-            <span class="text-[10px] text-zinc-400">Escalado Masivo FB & IG</span>
+      <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2.5 sm:gap-4 lg:gap-6">
+        <div class="flex items-center gap-2 sm:gap-2.5 p-3 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-blue-500/50 transition-all">
+          <i data-lucide="layout-grid" class="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 shrink-0"></i>
+          <div class="min-w-0">
+            <span class="block text-xs font-bold text-white truncate">Meta Ads</span>
+            <span class="text-[10px] text-zinc-400 truncate block">Escalado Masivo FB & IG</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-rose-500/50 transition-all">
-          <i data-lucide="video" class="w-5 h-5 text-rose-400"></i>
-          <div>
-            <span class="block text-xs font-bold text-white">TikTok Ads Manager</span>
-            <span class="text-[10px] text-zinc-400">Pauta & Contingencias</span>
+        <div class="flex items-center gap-2 sm:gap-2.5 p-3 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-rose-500/50 transition-all">
+          <i data-lucide="video" class="w-4 h-4 sm:w-5 sm:h-5 text-rose-400 shrink-0"></i>
+          <div class="min-w-0">
+            <span class="block text-xs font-bold text-white truncate">TikTok Ads</span>
+            <span class="text-[10px] text-zinc-400 truncate block">Pauta & Contingencias</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 transition-all">
-          <i data-lucide="message-square" class="w-5 h-5 text-emerald-400"></i>
-          <div>
-            <span class="block text-xs font-bold text-white">Pancake CRM</span>
-            <span class="text-[10px] text-zinc-400">Gestión de WhatsApp & BPO</span>
+        <div class="flex items-center gap-2 sm:gap-2.5 p-3 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 transition-all">
+          <i data-lucide="message-square" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0"></i>
+          <div class="min-w-0">
+            <span class="block text-xs font-bold text-white truncate">Pancake CRM</span>
+            <span class="text-[10px] text-zinc-400 truncate block">WhatsApp & BPO</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-purple-500/50 transition-all">
-          <i data-lucide="scissors" class="w-5 h-5 text-purple-400"></i>
-          <div>
-            <span class="block text-xs font-bold text-white">CapCut Pro</span>
-            <span class="text-[10px] text-zinc-400">Edición Dinámica Vertical</span>
+        <div class="flex items-center gap-2 sm:gap-2.5 p-3 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-purple-500/50 transition-all">
+          <i data-lucide="scissors" class="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 shrink-0"></i>
+          <div class="min-w-0">
+            <span class="block text-xs font-bold text-white truncate">CapCut Pro</span>
+            <span class="text-[10px] text-zinc-400 truncate block">Edición Dinámica (9:16)</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-green-500/50 transition-all">
-          <i data-lucide="shopping-cart" class="w-5 h-5 text-green-400"></i>
-          <div>
-            <span class="block text-xs font-bold text-white">Shopify</span>
-            <span class="text-[10px] text-zinc-400">Gestión de Tiendas & Pedidos</span>
+        <div class="col-span-2 sm:col-span-1 flex items-center justify-center sm:justify-start gap-2 sm:gap-2.5 p-3 sm:px-4 sm:py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-green-500/50 transition-all">
+          <i data-lucide="shopping-cart" class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 shrink-0"></i>
+          <div class="min-w-0">
+            <span class="block text-xs font-bold text-white truncate">Shopify</span>
+            <span class="text-[10px] text-zinc-400 truncate block">Gestión de Tiendas & Pedidos</span>
           </div>
         </div>
       </div>
@@ -273,43 +345,43 @@
   </section>
 
   <!-- BRANDS SECTION -->
-  <section class="py-16 bg-zinc-950">
+  <section class="py-12 sm:py-16 bg-zinc-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-center text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-8">
+      <p class="text-center text-[11px] sm:text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-6 sm:mb-8">
         Marcas y Clientes que Respaldan Mi Trabajo
       </p>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 items-center justify-center">
         
-        <a href="https://www.instagram.com/thegoatfatherpro/" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
-          <img src="assets/images/logo_thegoatfather.png" alt="The Goatfather" class="w-10 h-10 rounded-xl object-contain bg-zinc-950 p-1">
-          <div>
-            <h4 class="text-sm font-bold text-white group-hover:text-brand-400 transition-colors">The Goatfather®️</h4>
-            <span class="text-[11px] text-zinc-400">Suplementos & Bienestar</span>
+        <a href="https://www.instagram.com/thegoatfatherpro/" target="_blank" class="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
+          <img src="assets/images/logo_thegoatfather.png" alt="The Goatfather" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl object-contain bg-zinc-950 p-1 shrink-0">
+          <div class="min-w-0">
+            <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">The Goatfather®️</h4>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400 truncate block">Suplementos & Bienestar</span>
           </div>
         </a>
 
-        <a href="https://www.instagram.com/supersellerspro/" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
-          <img src="assets/images/logo_supersellers.jpg" alt="Super Sellers Pro" class="w-10 h-10 rounded-xl object-cover">
-          <div>
-            <h4 class="text-sm font-bold text-white group-hover:text-brand-400 transition-colors">Super Sellers Pro</h4>
-            <span class="text-[11px] text-zinc-400">E-commerce Wholesale</span>
+        <a href="https://www.instagram.com/supersellerspro/" target="_blank" class="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
+          <img src="assets/images/logo_supersellers.jpg" alt="Super Sellers Pro" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl object-cover shrink-0">
+          <div class="min-w-0">
+            <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">Super Sellers Pro</h4>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400 truncate block">Wholesale E-com</span>
           </div>
         </a>
 
-        <a href="https://www.instagram.com/centraldemangueras/" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
-          <img src="assets/images/logo_centralmangueras.jpg" alt="Central de Mangueras" class="w-10 h-10 rounded-xl object-cover">
-          <div>
-            <h4 class="text-sm font-bold text-white group-hover:text-brand-400 transition-colors">Central de Mangueras</h4>
-            <span class="text-[11px] text-zinc-400">Sector Industrial B2B</span>
+        <a href="https://www.instagram.com/centraldemangueras/" target="_blank" class="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
+          <img src="assets/images/logo_centralmangueras.jpg" alt="Central de Mangueras" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl object-cover shrink-0">
+          <div class="min-w-0">
+            <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">Central Mangueras</h4>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400 truncate block">Industrial B2B</span>
           </div>
         </a>
 
-        <a href="https://www.instagram.com/miltonolaveofficial/" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
-          <img src="assets/images/logo_miltonolave.webp" alt="Milton Olave Realtor" class="w-10 h-10 rounded-xl object-cover">
-          <div>
-            <h4 class="text-sm font-bold text-white group-hover:text-brand-400 transition-colors">Milton Olave</h4>
-            <span class="text-[11px] text-zinc-400">Real Estate & Mentoría</span>
+        <a href="https://www.instagram.com/miltonolaveofficial/" target="_blank" class="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-brand-500/40 transition-all group">
+          <img src="assets/images/logo_miltonolave.webp" alt="Milton Olave Realtor" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl object-cover shrink-0">
+          <div class="min-w-0">
+            <h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-brand-400 transition-colors truncate">Milton Olave</h4>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400 truncate block">Real Estate & Mentoría</span>
           </div>
         </a>
 
@@ -318,99 +390,109 @@
   </section>
 
   <!-- METRICS & SCALE SECTION -->
-  <section id="metricas" class="py-24 relative">
+  <section id="metricas" class="py-16 sm:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-5">
         <div>
-          <span class="text-brand-400 font-bold text-xs uppercase tracking-wider block mb-2">Rendimiento Cuantificable</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <span class="text-brand-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider block mb-1.5">Rendimiento Cuantificable</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Métricas Reales en Pauta Publicitaria
           </h2>
-          <p class="text-zinc-400 text-sm sm:text-base mt-2 max-w-2xl">
+          <p class="text-zinc-400 text-xs sm:text-base mt-2 max-w-2xl leading-relaxed">
             Resultados consolidados de mi rol como Lead Trafficker en Logigho para más de 37 a 57 tiendas en pauta activa durante Septiembre y Octubre 2026 en Colombia.
           </p>
         </div>
 
-        <div class="inline-flex items-center gap-2 p-1 bg-zinc-900 border border-zinc-800 rounded-xl">
-          <button id="btn-tab-consolidado" onclick="switchTab('consolidado')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-brand-600 text-white shadow-sm">
-            Bimestre Consolidado
+        <!-- TAB SWITCHER (Responsive grid on mobile, inline on desktop) -->
+        <div class="w-full sm:w-auto grid grid-cols-3 sm:inline-flex p-1 bg-zinc-900 border border-zinc-800 rounded-xl gap-1 shrink-0">
+          <button id="btn-tab-consolidado" onclick="switchTab('consolidado')" class="px-2 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-bold transition-all bg-brand-600 text-white shadow-sm text-center">
+            <span class="sm:hidden">Consolidado</span>
+            <span class="hidden sm:inline">Bimestre Consolidado</span>
           </button>
-          <button id="btn-tab-octubre" onclick="switchTab('octubre')" class="px-4 py-2 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition-all">
-            Octubre 2026
+          <button id="btn-tab-octubre" onclick="switchTab('octubre')" class="px-2 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-semibold text-zinc-400 hover:text-white transition-all text-center">
+            <span class="sm:hidden">Octubre</span>
+            <span class="hidden sm:inline">Octubre 2026</span>
           </button>
-          <button id="btn-tab-septiembre" onclick="switchTab('septiembre')" class="px-4 py-2 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition-all">
-            Septiembre 2026
+          <button id="btn-tab-septiembre" onclick="switchTab('septiembre')" class="px-2 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-semibold text-zinc-400 hover:text-white transition-all text-center">
+            <span class="sm:hidden">Septiembre</span>
+            <span class="hidden sm:inline">Septiembre 2026</span>
           </button>
         </div>
       </div>
 
       <!-- KPI Grid Dynamic Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
         
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card p-5 sm:p-6 rounded-2xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-semibold text-zinc-400">Inversión Gestionada</span>
             <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400"><i data-lucide="dollar-sign" class="w-4 h-4"></i></div>
           </div>
-          <div id="metric-inversion" class="text-3xl font-extrabold text-white tracking-tight">+$527.4M COP</div>
-          <p id="metric-inversion-sub" class="text-xs text-zinc-400 mt-2">~$130.000 USD administrados con estabilidad</p>
+          <div id="metric-inversion" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">+$527.4M COP</div>
+          <p id="metric-inversion-sub" class="text-[11px] sm:text-xs text-zinc-400 mt-2">~$130.000 USD administrados con estabilidad</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card p-5 sm:p-6 rounded-2xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-semibold text-zinc-400">Leads a WhatsApp (CRM)</span>
             <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i data-lucide="message-square" class="w-4 h-4"></i></div>
           </div>
-          <div id="metric-leads" class="text-3xl font-extrabold text-emerald-400 tracking-tight">782.964</div>
-          <p id="metric-leads-sub" class="text-xs text-zinc-400 mt-2">Conversaciones comerciales directas</p>
+          <div id="metric-leads" class="text-2xl sm:text-3xl font-extrabold text-emerald-400 tracking-tight">782.964</div>
+          <p id="metric-leads-sub" class="text-[11px] sm:text-xs text-zinc-400 mt-2">Conversaciones comerciales directas</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card p-5 sm:p-6 rounded-2xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-semibold text-zinc-400">CPR Promedio Global</span>
             <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400"><i data-lucide="trending-down" class="w-4 h-4"></i></div>
           </div>
-          <div id="metric-cpr" class="text-3xl font-extrabold text-purple-400 tracking-tight">$677 COP</div>
-          <p id="metric-cpr-sub" class="text-xs text-zinc-400 mt-2">Clasificación: «Excelente» (&lt; $800 COP)</p>
+          <div id="metric-cpr" class="text-2xl sm:text-3xl font-extrabold text-purple-400 tracking-tight">$677 COP</div>
+          <p id="metric-cpr-sub" class="text-[11px] sm:text-xs text-zinc-400 mt-2">Clasificación: «Excelente» (&lt; $800 COP)</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-4">
+        <div class="glass-card p-5 sm:p-6 rounded-2xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
             <span class="text-xs font-semibold text-zinc-400">Ventas Registradas (BPO)</span>
             <div class="p-2 rounded-lg bg-rose-500/10 text-rose-400"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
           </div>
-          <div id="metric-ventas" class="text-3xl font-extrabold text-rose-400 tracking-tight">+15.182 /mes</div>
-          <p id="metric-ventas-sub" class="text-xs text-zinc-400 mt-2">CPA Promedio: $14.896 COP (~$3.7 USD)</p>
+          <div id="metric-ventas" class="text-2xl sm:text-3xl font-extrabold text-rose-400 tracking-tight">+15.182 /mes</div>
+          <p id="metric-ventas-sub" class="text-[11px] sm:text-xs text-zinc-400 mt-2">CPA Promedio: $14.896 COP (~$3.7 USD)</p>
         </div>
 
       </div>
 
       <!-- Confidentiality notice box -->
-      <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 flex items-start sm:items-center gap-3 mb-8">
+      <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 flex items-start sm:items-center gap-3 mb-6 sm:mb-8">
         <i data-lucide="lock" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0"></i>
         <p class="text-xs text-zinc-400 leading-relaxed">
           <strong class="text-zinc-200">Protección de Datos & Confidencialidad:</strong> Los nombres de tiendas y números telefónicos están anonimizados por acuerdo de confidencialidad comercial. Los datos de costos, gasto y conversaciones son 100% verídicos y extraídos del software de monitoreo operativo.
         </p>
       </div>
 
-      <!-- Sample Breakdown Table -->
+      <!-- Breakdown Table (with mobile swipe indicator) -->
       <div class="glass-card rounded-2xl overflow-hidden border border-zinc-800">
-        <div class="p-5 border-b border-zinc-800 flex items-center justify-between">
-          <h3 class="font-bold text-sm text-white flex items-center gap-2">
+        <div class="p-4 sm:p-5 border-b border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h3 class="font-bold text-xs sm:text-sm text-white flex items-center gap-2">
             <i data-lucide="table" class="w-4 h-4 text-brand-400"></i>
-            Muestra de Rendimiento por Tienda (Octubre 2026 - Datos Anonimizados)
+            Muestra de Rendimiento por Tienda (Octubre 2026 - Anonimizado)
           </h3>
-          <span class="text-xs text-zinc-400">Fuente: CRM & Pancake API</span>
+          <span class="text-[11px] text-zinc-400">Fuente: CRM & Pancake API</span>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs">
+        <!-- Swipe Indicator on Mobile -->
+        <div class="sm:hidden flex items-center justify-end gap-1.5 text-[11px] text-brand-400 font-medium px-4 py-2 bg-zinc-900/70 border-b border-zinc-800">
+          <i data-lucide="chevrons-right" class="w-3.5 h-3.5 animate-pulse"></i>
+          <span>Desliza horizontalmente para ver la tabla</span>
+        </div>
+
+        <div class="overflow-x-auto touch-scroll">
+          <table class="w-full text-left text-xs min-w-[580px]">
             <thead class="bg-zinc-900/90 text-zinc-400 font-semibold border-b border-zinc-800">
               <tr>
                 <th class="py-3 px-4">Tienda Categoría</th>
                 <th class="py-3 px-4">Plataforma</th>
-                <th class="py-3 px-4">Presupuesto Diario</th>
+                <th class="py-3 px-4">Presupuesto</th>
                 <th class="py-3 px-4">Gasto Mensual</th>
                 <th class="py-3 px-4">Leads CRM</th>
                 <th class="py-3 px-4">CPR Meta</th>
@@ -419,51 +501,51 @@
             </thead>
             <tbody class="divide-y divide-zinc-800/60 font-medium text-zinc-300">
               <tr class="hover:bg-zinc-900/40 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> E-commerce BODY #01
+                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span> E-commerce BODY #01
                 </td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
-                <td class="py-3.5 px-4">$380.000 COP</td>
-                <td class="py-3.5 px-4 font-semibold text-white">$11.716.637 COP</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-400">16.144</td>
-                <td class="py-3.5 px-4 text-emerald-400 font-bold">$726 COP</td>
-                <td class="py-3.5 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
+                <td class="py-3 px-4">$380.000 COP</td>
+                <td class="py-3 px-4 font-semibold text-white">$11.716.637 COP</td>
+                <td class="py-3 px-4 font-bold text-emerald-400">16.144</td>
+                <td class="py-3 px-4 text-emerald-400 font-bold">$726 COP</td>
+                <td class="py-3 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
               </tr>
 
               <tr class="hover:bg-zinc-900/40 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> E-commerce SHORCITO #03
+                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span> E-commerce SHORCITO #03
                 </td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
-                <td class="py-3.5 px-4">$190.000 COP</td>
-                <td class="py-3.5 px-4 font-semibold text-white">$9.882.456 COP</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-400">14.391</td>
-                <td class="py-3.5 px-4 text-emerald-400 font-bold">$687 COP</td>
-                <td class="py-3.5 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
+                <td class="py-3 px-4">$190.000 COP</td>
+                <td class="py-3 px-4 font-semibold text-white">$9.882.456 COP</td>
+                <td class="py-3 px-4 font-bold text-emerald-400">14.391</td>
+                <td class="py-3 px-4 text-emerald-400 font-bold">$687 COP</td>
+                <td class="py-3 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
               </tr>
 
               <tr class="hover:bg-zinc-900/40 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> E-commerce CONJUNTOS #01
+                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span> E-commerce CONJUNTOS #01
                 </td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
-                <td class="py-3.5 px-4">$190.000 COP</td>
-                <td class="py-3.5 px-4 font-semibold text-white">$6.331.357 COP</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-400">14.715</td>
-                <td class="py-3.5 px-4 text-emerald-400 font-bold">$430 COP</td>
-                <td class="py-3.5 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">RÉCORD</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
+                <td class="py-3 px-4">$190.000 COP</td>
+                <td class="py-3 px-4 font-semibold text-white">$6.331.357 COP</td>
+                <td class="py-3 px-4 font-bold text-emerald-400">14.715</td>
+                <td class="py-3 px-4 text-emerald-400 font-bold">$430 COP</td>
+                <td class="py-3 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">RÉCORD</span></td>
               </tr>
 
               <tr class="hover:bg-zinc-900/40 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> E-commerce CAMISETAS #01
+                <td class="py-3 px-4 font-bold text-white flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span> E-commerce CAMISETAS #01
                 </td>
-                <td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
-                <td class="py-3.5 px-4">$191.160 COP</td>
-                <td class="py-3.5 px-4 font-semibold text-white">$5.747.760 COP</td>
-                <td class="py-3.5 px-4 font-bold text-emerald-400">8.393</td>
-                <td class="py-3.5 px-4 text-emerald-400 font-bold">$685 COP</td>
-                <td class="py-3.5 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">META</span></td>
+                <td class="py-3 px-4">$191.160 COP</td>
+                <td class="py-3 px-4 font-semibold text-white">$5.747.760 COP</td>
+                <td class="py-3 px-4 font-bold text-emerald-400">8.393</td>
+                <td class="py-3 px-4 text-emerald-400 font-bold">$685 COP</td>
+                <td class="py-3 px-4"><span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold">EXCELENTE</span></td>
               </tr>
             </tbody>
           </table>
@@ -474,164 +556,165 @@
   </section>
 
   <!-- CASE STUDIES -->
-  <section id="casos" class="py-24 bg-zinc-900/30 border-t border-zinc-800/80">
+  <section id="casos" class="py-16 sm:py-24 bg-zinc-900/30 border-t border-zinc-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <span class="text-brand-400 font-bold text-xs uppercase tracking-wider block">Experiencia de Marca</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3 sm:space-y-4">
+        <span class="text-brand-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider block">Experiencia de Marca</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Estrategia de Contenidos, Filmmaking & Conversión
         </h2>
-        <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+        <p class="text-zinc-400 text-xs sm:text-base leading-relaxed">
           Estructuro el ciclo comercial integral: conceptualización de parrillas, guiones persuasivos, filmación in-situ y cierre de ventas.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
         
         <!-- Case 1: The Goatfather -->
-        <div class="glass-card rounded-3xl overflow-hidden p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl overflow-hidden p-5 sm:p-8 space-y-5 sm:space-y-6 flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="assets/images/logo_thegoatfather.png" alt="The Goatfather" class="w-12 h-12 rounded-xl object-contain bg-zinc-900 p-1">
-                <div>
-                  <h3 class="text-xl font-bold text-white">The Goatfather®️</h3>
-                  <span class="text-xs text-zinc-400">Bienestar & Suplementación Premium (DTC)</span>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="assets/images/logo_thegoatfather.png" alt="The Goatfather" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-contain bg-zinc-900 p-1 shrink-0">
+                <div class="min-w-0">
+                  <h3 class="text-lg sm:text-xl font-bold text-white truncate">The Goatfather®️</h3>
+                  <span class="text-[11px] sm:text-xs text-zinc-400 truncate block">Bienestar & Suplementación (DTC)</span>
                 </div>
               </div>
-              <a href="https://www.instagram.com/thegoatfatherpro/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all">
+              <a href="https://www.instagram.com/thegoatfatherpro/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all shrink-0">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">Community Manager</span>
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">Parrilla Mensual</span>
-              <span class="px-2.5 py-1 rounded-lg bg-brand-500/10 text-[11px] font-semibold text-brand-400 border border-brand-500/20">Guionista</span>
-              <span class="px-2.5 py-1 rounded-lg bg-rose-500/10 text-[11px] font-semibold text-rose-400 border border-rose-500/20">Filmmaker & Edición</span>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">CM</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">Parrilla Mensual</span>
+              <span class="px-2.5 py-1 rounded-lg bg-brand-500/10 text-[10px] sm:text-[11px] font-semibold text-brand-400 border border-brand-500/20">Guionista</span>
+              <span class="px-2.5 py-1 rounded-lg bg-rose-500/10 text-[10px] sm:text-[11px] font-semibold text-rose-400 border border-rose-500/20">Filmmaker & Edición</span>
             </div>
 
-            <p class="text-sm text-zinc-400 leading-relaxed">
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Diseño integral de la parrilla de contenidos mensual para Instagram. Redacción de guiones con ganchos psicológicos enfocados en bienestar diario. Grabación física con creadores y edición vertical dinámica para Reels de alta interacción.
             </p>
 
-            <div class="grid grid-cols-4 gap-2 pt-2">
-              <img src="assets/images/goatfather_post_1.jpg" alt="Post 1" class="w-full h-24 object-cover rounded-xl border border-zinc-800">
-              <img src="assets/images/goatfather_post_2.jpg" alt="Post 2" class="w-full h-24 object-cover rounded-xl border border-zinc-800">
-              <img src="assets/images/goatfather_post_3.jpg" alt="Post 3" class="w-full h-24 object-cover rounded-xl border border-zinc-800">
-              <img src="assets/images/goatfather_post_4.jpg" alt="Post 4" class="w-full h-24 object-cover rounded-xl border border-zinc-800">
+            <!-- Responsive 2x2 grid on mobile, 4 columns on desktop -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+              <img src="assets/images/goatfather_post_1.jpg" alt="Post 1" class="w-full h-28 sm:h-24 object-cover rounded-xl border border-zinc-800">
+              <img src="assets/images/goatfather_post_2.jpg" alt="Post 2" class="w-full h-28 sm:h-24 object-cover rounded-xl border border-zinc-800">
+              <img src="assets/images/goatfather_post_3.jpg" alt="Post 3" class="w-full h-28 sm:h-24 object-cover rounded-xl border border-zinc-800">
+              <img src="assets/images/goatfather_post_4.jpg" alt="Post 4" class="w-full h-28 sm:h-24 object-cover rounded-xl border border-zinc-800">
             </div>
           </div>
 
-          <div class="pt-4 border-t border-zinc-800/80 text-xs text-zinc-400">
+          <div class="pt-4 border-t border-zinc-800/80 text-[11px] sm:text-xs text-zinc-400">
             <span>Resultados: Crecimiento orgánico sostenido y picos comerciales.</span>
           </div>
         </div>
 
         <!-- Case 2: Super Sellers Pro -->
-        <div class="glass-card rounded-3xl overflow-hidden p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl overflow-hidden p-5 sm:p-8 space-y-5 sm:space-y-6 flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="assets/images/logo_supersellers.jpg" alt="Super Sellers Pro" class="w-12 h-12 rounded-xl object-cover">
-                <div>
-                  <h3 class="text-xl font-bold text-white">Super Sellers Pro</h3>
-                  <span class="text-xs text-zinc-400">Educación Digital & Mentorías High-Ticket</span>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="assets/images/logo_supersellers.jpg" alt="Super Sellers Pro" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover shrink-0">
+                <div class="min-w-0">
+                  <h3 class="text-lg sm:text-xl font-bold text-white truncate">Super Sellers Pro</h3>
+                  <span class="text-[11px] sm:text-xs text-zinc-400 truncate block">Educación & Mentorías High-Ticket</span>
                 </div>
               </div>
-              <a href="https://www.instagram.com/supersellerspro/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all">
+              <a href="https://www.instagram.com/supersellerspro/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all shrink-0">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">CM & Guiones</span>
-              <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-[11px] font-semibold text-emerald-400 border border-emerald-500/20">Appointment Setter</span>
-              <span class="px-2.5 py-1 rounded-lg bg-amber-500/10 text-[11px] font-semibold text-amber-400 border border-amber-500/20">Closer de Ventas</span>
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">Filmmaker</span>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">CM & Guiones</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-[10px] sm:text-[11px] font-semibold text-emerald-400 border border-emerald-500/20">Appointment Setter</span>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500/10 text-[10px] sm:text-[11px] font-semibold text-amber-400 border border-amber-500/20">Closer de Ventas</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">Filmmaker</span>
             </div>
 
-            <p class="text-sm text-zinc-400 leading-relaxed">
-              Combinación de marketing de contenidos y monetización directa. Además del armado de parrilla y producción audiovisual, desempeñé el rol de <strong>Setter y Closer de Ventas</strong>: prospección en DMs, cualificación de emprendedores, agendamiento y conducción de llamadas para cierre de inscripciones de alto valor.
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Combinación de marketing de contenidos y monetización directa. Además del armado de parrilla y producción audiovisual, desempeñé el rol de <strong class="text-white">Setter y Closer de Ventas</strong>: prospección en DMs, cualificación de emprendedores, agendamiento y conducción de llamadas para cierre de inscripciones de alto valor.
             </p>
 
-            <div class="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-1.5">
               <div class="flex items-center gap-2 text-xs font-semibold text-white">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
                 <span>Ciclo Comercial Completo</span>
               </div>
-              <p class="text-xs text-zinc-400">
+              <p class="text-[11px] sm:text-xs text-zinc-400">
                 Transformación de interacción orgánica en DMs a llamadas de venta de alto ticket cerradas con éxito.
               </p>
             </div>
           </div>
 
-          <div class="pt-4 border-t border-zinc-800/80 text-xs text-zinc-400">
+          <div class="pt-4 border-t border-zinc-800/80 text-[11px] sm:text-xs text-zinc-400">
             <span>Enfoque: Conversión de seguidores en alumnos de mentoría.</span>
           </div>
         </div>
 
         <!-- Case 3: Central de Mangueras -->
-        <div class="glass-card rounded-3xl overflow-hidden p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl overflow-hidden p-5 sm:p-8 space-y-5 sm:space-y-6 flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="assets/images/logo_centralmangueras.jpg" alt="Central de Mangueras" class="w-12 h-12 rounded-xl object-cover">
-                <div>
-                  <h3 class="text-xl font-bold text-white">Central de Mangueras</h3>
-                  <span class="text-xs text-zinc-400">Sector Industrial, Hidráulica & B2B</span>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="assets/images/logo_centralmangueras.jpg" alt="Central de Mangueras" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover shrink-0">
+                <div class="min-w-0">
+                  <h3 class="text-lg sm:text-xl font-bold text-white truncate">Central de Mangueras</h3>
+                  <span class="text-[11px] sm:text-xs text-zinc-400 truncate block">Sector Industrial & B2B</span>
                 </div>
               </div>
-              <a href="https://www.instagram.com/centraldemangueras/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all">
+              <a href="https://www.instagram.com/centraldemangueras/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all shrink-0">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">CM & Parrilla</span>
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">Filmmaking en Planta</span>
-              <span class="px-2.5 py-1 rounded-lg bg-blue-500/10 text-[11px] font-semibold text-blue-400 border border-blue-500/20">Guiones Técnicos</span>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">CM & Parrilla</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">Filmmaking en Planta</span>
+              <span class="px-2.5 py-1 rounded-lg bg-blue-500/10 text-[10px] sm:text-[11px] font-semibold text-blue-400 border border-blue-500/20">Guiones Técnicos</span>
             </div>
 
-            <p class="text-sm text-zinc-400 leading-relaxed">
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Humanización y dinamización de una marca técnica industrial. Grabación en instalaciones físicas mostrando procesos de ensamblaje de mangueras de alta presión, pruebas de resistencia y catálogo de conexiones, generando cotizaciones inmediatas.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-zinc-800/80 text-xs text-zinc-400">
+          <div class="pt-4 border-t border-zinc-800/80 text-[11px] sm:text-xs text-zinc-400">
             <span>Enfoque: Generación de cotizaciones directas B2B a talleres y empresas.</span>
           </div>
         </div>
 
         <!-- Case 4: Milton Olave Realtor -->
-        <div class="glass-card rounded-3xl overflow-hidden p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl overflow-hidden p-5 sm:p-8 space-y-5 sm:space-y-6 flex flex-col justify-between">
           <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="assets/images/logo_miltonolave.webp" alt="Milton Olave" class="w-12 h-12 rounded-xl object-cover">
-                <div>
-                  <h3 class="text-xl font-bold text-white">Milton Olave Realtor</h3>
-                  <span class="text-xs text-zinc-400">Real Estate & Formación Inmobiliaria</span>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="assets/images/logo_miltonolave.webp" alt="Milton Olave" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover shrink-0">
+                <div class="min-w-0">
+                  <h3 class="text-lg sm:text-xl font-bold text-white truncate">Milton Olave Realtor</h3>
+                  <span class="text-[11px] sm:text-xs text-zinc-400 truncate block">Real Estate & Formación</span>
                 </div>
               </div>
-              <a href="https://www.instagram.com/miltonolaveofficial/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all">
+              <a href="https://www.instagram.com/miltonolaveofficial/" target="_blank" class="p-2 rounded-xl bg-zinc-800 hover:bg-brand-600 text-zinc-300 hover:text-white transition-all shrink-0">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
               </a>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">Marca Personal</span>
-              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[11px] font-semibold text-zinc-300">CM & Parrilla</span>
-              <span class="px-2.5 py-1 rounded-lg bg-purple-500/10 text-[11px] font-semibold text-purple-400 border border-purple-500/20">Filmmaker de Eventos</span>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">Marca Personal</span>
+              <span class="px-2.5 py-1 rounded-lg bg-zinc-800 text-[10px] sm:text-[11px] font-semibold text-zinc-300">CM & Parrilla</span>
+              <span class="px-2.5 py-1 rounded-lg bg-purple-500/10 text-[10px] sm:text-[11px] font-semibold text-purple-400 border border-purple-500/20">Filmmaker de Eventos</span>
             </div>
 
-            <p class="text-sm text-zinc-400 leading-relaxed">
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Construcción y posicionamiento de autoridad para agente y mentor inmobiliario internacional. Grabación de conferencias presenciales, cápsulas educativas sobre ventas en bienes raíces y creación de contenido para captar agentes e inversionistas.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-zinc-800/80 text-xs text-zinc-400">
+          <div class="pt-4 border-t border-zinc-800/80 text-[11px] sm:text-xs text-zinc-400">
             <span>Enfoque: Liderazgo de opinión y captación para seminarios comerciales.</span>
           </div>
         </div>
@@ -641,76 +724,76 @@
   </section>
 
   <!-- SKILLS & SERVICES -->
-  <section class="py-24 relative bg-zinc-950">
+  <section class="py-16 sm:py-24 relative bg-zinc-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <span class="text-brand-400 font-bold text-xs uppercase tracking-wider block">Arsenal Técnico</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3 sm:space-y-4">
+        <span class="text-brand-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider block">Arsenal Técnico</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Habilidades de Alto Impacto Comercial
         </h2>
-        <p class="text-zinc-400 text-sm sm:text-base">
+        <p class="text-zinc-400 text-xs sm:text-base leading-relaxed">
           Especialista en escalado de E-commerce y Dropshipping en Colombia, y estratega en captación y adquisición para empresas de servicios y marcas corporativas.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
-            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
+            <i data-lucide="shield-alert" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Contingencias en TikTok Ads</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Contingencias en TikTok Ads</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Estructuración y blindaje de cuentas publicitarias, Business Centers y píxeles en TikTok. Con experiencia directa en dropshipping para evitar paradas operativas ante bloqueos o revisiones de plataforma.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
-            <i data-lucide="badge-check" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
+            <i data-lucide="badge-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Portafolios Comerciales en Meta</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Portafolios Comerciales en Meta</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Creación, organización de activos corporativos y verificación legal de Business Managers ante Meta para habilitar mayores límites de gasto diario y protección total de activos.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
-            <i data-lucide="code" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+            <i data-lucide="code" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Integración de APIs de Meta</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Integración de APIs de Meta</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Implementación de Conversions API (CAPI) y WhatsApp Cloud API conectadas con CRMs (Pancake y sistemas BPO) para una atribución precisa de compras y eventos fuera del navegador.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
-            <i data-lucide="video" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
+            <i data-lucide="video" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Filmmaking & Guionizado</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Filmmaking & Guionizado</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Dirección audiovisual orientada a la conversión. Elaboración de guiones basados en frameworks de retención y grabación física con iluminación y composición pensadas para formato vertical (9:16).
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
-            <i data-lucide="phone-call" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+            <i data-lucide="phone-call" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Campañas para Empresas de Servicios</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Campañas para Empresas de Servicios</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Diseño e implementación de campañas de generación de demanda y leads para sectores de servicios, profesionales y B2B, logrando prospectos cualificados y alto retorno comercial.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
-            <i data-lucide="users-2" class="w-6 h-6"></i>
+        <div class="p-5 sm:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3 sm:space-y-4 hover:border-zinc-700 transition-colors">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold">
+            <i data-lucide="users-2" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-white">Liderazgo & Coordinación</h3>
+          <h3 class="text-base sm:text-lg font-bold text-white">Liderazgo & Coordinación</h3>
           <p class="text-xs text-zinc-400 leading-relaxed">
             Gestión y dirección de equipo creativo compuesto por 1 Diseñador Gráfico/Video y 1 Trafficker Junior, garantizando ritmo de testeo continuo y control de métricas diarias.
           </p>
@@ -721,16 +804,16 @@
   </section>
 
   <!-- ABOUT ME SECTION -->
-  <section id="sobre-mi" class="py-24 bg-zinc-900/30 border-t border-zinc-800/80">
+  <section id="sobre-mi" class="py-16 sm:py-24 bg-zinc-900/30 border-t border-zinc-800/80">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="glass-card rounded-3xl p-8 sm:p-12 space-y-8">
+      <div class="glass-card rounded-3xl p-6 sm:p-12 space-y-6 sm:space-y-8">
         
-        <div class="space-y-3">
-          <span class="text-brand-400 font-bold text-xs uppercase tracking-wider block">Perfil Profesional & Valores</span>
-          <h2 class="text-3xl font-extrabold text-white">Sobre Mí</h2>
+        <div class="space-y-2 sm:space-y-3">
+          <span class="text-brand-400 font-bold text-[11px] sm:text-xs uppercase tracking-wider block">Perfil Profesional & Valores</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mí</h2>
         </div>
 
-        <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+        <div class="space-y-3.5 sm:space-y-4 text-zinc-300 text-xs sm:text-base leading-relaxed">
           <p>
             Soy <strong class="text-zinc-100 font-semibold">Julio Cesar Restrepo Hernandez</strong>, un apasionado del marketing y la estrategia digital con un enfoque orientado a resultados reales. Me defino como un profesional <strong class="text-zinc-100 font-semibold">responsable, con un alto sentido de colaboración, de rápido aprendizaje y con facilidad de integración a equipos dinámicos</strong>.
           </p>
@@ -746,43 +829,44 @@
         </div>
 
         <!-- Highlights tags -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2">
           <div class="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-center">
-            <span class="block text-brand-400 font-bold text-sm">Responsabilidad</span>
-            <span class="text-[11px] text-zinc-400">Compromiso 100%</span>
+            <span class="block text-brand-400 font-bold text-xs sm:text-sm">Responsabilidad</span>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400">Compromiso 100%</span>
           </div>
           <div class="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-center">
-            <span class="block text-emerald-400 font-bold text-sm">Colaboración</span>
-            <span class="text-[11px] text-zinc-400">Trabajo en Equipo</span>
+            <span class="block text-emerald-400 font-bold text-xs sm:text-sm">Colaboración</span>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400">Trabajo en Equipo</span>
           </div>
           <div class="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-center">
-            <span class="block text-purple-400 font-bold text-sm">Rápido Aprendizaje</span>
-            <span class="text-[11px] text-zinc-400">Adaptabilidad Ágil</span>
+            <span class="block text-purple-400 font-bold text-xs sm:text-sm">Aprendizaje</span>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400">Adaptabilidad Ágil</span>
           </div>
           <div class="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 text-center">
-            <span class="block text-rose-400 font-bold text-sm">Foco en Cliente</span>
-            <span class="text-[11px] text-zinc-400">Servicio & Empatía</span>
+            <span class="block text-rose-400 font-bold text-xs sm:text-sm">Foco en Cliente</span>
+            <span class="text-[10px] sm:text-[11px] text-zinc-400">Servicio & Empatía</span>
           </div>
         </div>
 
-        <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full overflow-hidden bg-zinc-800 border-2 border-brand-500">
+        <!-- Profile footer row (Stacked on mobile, row on desktop) -->
+        <div class="pt-6 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-zinc-800 border-2 border-brand-500 shrink-0">
               <img src="assets/images/julio_perfil.jpg" alt="Julio Cesar Restrepo" class="w-full h-full object-cover object-top">
             </div>
-            <div>
-              <h4 class="font-bold text-white text-sm">Julio Cesar Restrepo Hernandez</h4>
-              <p class="text-xs text-zinc-400">Marketer & Estratega Digital</p>
+            <div class="min-w-0">
+              <h4 class="font-bold text-white text-xs sm:text-sm truncate">Julio Cesar Restrepo Hernandez</h4>
+              <p class="text-[11px] sm:text-xs text-zinc-400 truncate">Marketer & Estratega Digital</p>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="px-5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 font-semibold text-xs transition-all flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4 text-brand-400"></i>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
+            <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="px-5 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-brand-500/40 font-semibold text-xs transition-all flex items-center justify-center gap-2 text-center">
+              <i data-lucide="mail" class="w-4 h-4 text-brand-400 shrink-0"></i>
               <span>Enviar Correo</span>
             </a>
-            <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs hover:bg-emerald-400 transition-all flex items-center gap-2">
-              <i data-lucide="message-circle" class="w-4 h-4 text-zinc-950"></i>
+            <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs hover:bg-emerald-400 transition-all flex items-center justify-center gap-2 text-center">
+              <i data-lucide="message-circle" class="w-4 h-4 text-zinc-950 shrink-0"></i>
               <span>Escríbeme por WhatsApp</span>
             </a>
           </div>
@@ -793,45 +877,82 @@
   </section>
 
   <!-- CTA FOOTER -->
-  <footer class="py-20 border-t border-zinc-800 bg-zinc-950 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+  <footer class="py-14 sm:py-20 border-t border-zinc-800 bg-zinc-950 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8">
       
-      <div class="max-w-2xl mx-auto space-y-4">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+      <div class="max-w-2xl mx-auto space-y-3">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           ¿Listo para escalar la rentabilidad de tu negocio?
         </h2>
-        <p class="text-sm sm:text-base text-zinc-400">
+        <p class="text-xs sm:text-base text-zinc-400 leading-relaxed">
           Ya sea para escalar tiendas de e-commerce masivo o para estructurar la adquisición de clientes en empresas de servicios en Colombia, hablemos para diseñar tu próximo paso.
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-sm hover:from-emerald-400 hover:to-teal-500 transition-all flex items-center gap-3 shadow-xl shadow-emerald-500/20">
-          <i data-lucide="message-circle" class="w-5 h-5"></i>
+      <!-- Footer Action Buttons (Full-width vertical stack on mobile, horizontal row on desktop) -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 max-w-lg sm:max-w-none mx-auto">
+        <a href="https://wa.me/573045954077?text=Hola%20Julio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto" target="_blank" class="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-xs sm:text-sm hover:from-emerald-400 hover:to-teal-500 transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-500/20 text-center">
+          <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"></i>
           <span>WhatsApp: +57 304 595 4077</span>
         </a>
-        <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="px-8 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-sm hover:bg-zinc-800 transition-all flex items-center gap-3">
-          <i data-lucide="mail" class="w-5 h-5 text-brand-400"></i>
+        <a href="mailto:restrejcjob@gmail.com?subject=Propuesta%20de%20Proyecto%20-%20Portafolio%20Julio%20Restrepo&body=Hola%20Julio,%0A%0AEstuve%20revisando%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto%20para%20mi%20marca.%0A%0ASaludos!" onclick="handleEmailClick(event)" class="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-xs sm:text-sm hover:bg-zinc-800 transition-all flex items-center justify-center gap-2.5 text-center">
+          <i data-lucide="mail" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-400 shrink-0"></i>
           <span>restrejcjob@gmail.com</span>
         </a>
-        <a href="https://www.linkedin.com/in/julio-cesar-restrepo-hernandez-3b6829243/" target="_blank" class="px-8 py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-sm hover:bg-zinc-800 transition-all flex items-center gap-3">
-          <i data-lucide="linkedin" class="w-5 h-5 text-brand-400"></i>
+        <a href="https://www.linkedin.com/in/julio-cesar-restrepo-hernandez-3b6829243/" target="_blank" class="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-zinc-900 border border-zinc-800 text-white font-bold text-xs sm:text-sm hover:bg-zinc-800 transition-all flex items-center justify-center gap-2.5 text-center">
+          <i data-lucide="linkedin" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-400 shrink-0"></i>
           <span>LinkedIn</span>
         </a>
       </div>
 
-      <div class="pt-12 border-t border-zinc-900 text-xs text-zinc-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="pt-8 sm:pt-12 border-t border-zinc-900 text-[11px] sm:text-xs text-zinc-400 flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
         <p>© 2026 Julio Cesar Restrepo Hernandez. Todos los derechos reservados.</p>
-        <p class="flex items-center gap-1">Marketer & Estratega Digital | Colombia 🇨🇴.</p>
+        <p class="flex items-center justify-center gap-1">Marketer & Estratega Digital | Colombia 🇨🇴.</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- TABS LOGIC -->
+  <!-- Toast Notification for Email -->
+  <div id="email-toast" class="fixed bottom-5 right-5 left-5 sm:left-auto sm:w-80 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none p-4 rounded-2xl bg-zinc-900 border border-brand-500/40 text-white shadow-2xl flex items-center gap-3">
+    <div class="p-2 rounded-xl bg-brand-500/10 text-brand-400 shrink-0">
+      <i data-lucide="mail-check" class="w-5 h-5"></i>
+    </div>
+    <div class="min-w-0">
+      <h5 class="text-xs font-bold truncate">Abriendo gestor de correo...</h5>
+      <p class="text-[11px] text-zinc-400 truncate">Copiado: <span class="text-brand-400 font-medium">restrejcjob@gmail.com</span></p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLERS -->
   <script>
     lucide.createIcons();
 
+    // Mobile Menu Controls
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        drawer.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (drawer && !drawer.classList.contains('hidden')) {
+        drawer.classList.add('hidden');
+        if (icon) icon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      }
+    }
+
+    // Dynamic Tabs Data
     const dataTabs = {
       consolidado: {
         inversion: '+$527.4M COP',
@@ -870,9 +991,9 @@
       tabs.forEach(t => {
         const btn = document.getElementById(`btn-tab-${t}`);
         if (t === tab) {
-          btn.className = 'px-4 py-2 rounded-lg text-xs font-bold transition-all bg-brand-600 text-white shadow-sm';
+          btn.className = 'px-2 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-bold transition-all bg-brand-600 text-white shadow-sm text-center';
         } else {
-          btn.className = 'px-4 py-2 rounded-lg text-xs font-semibold text-zinc-400 hover:text-white transition-all';
+          btn.className = 'px-2 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-semibold text-zinc-400 hover:text-white transition-all text-center';
         }
       });
 
@@ -886,30 +1007,15 @@
       document.getElementById('metric-ventas').textContent = d.ventas;
       document.getElementById('metric-ventas-sub').textContent = d.ventasSub;
     }
-  </script>
 
-
-  <!-- Toast Notification for Email -->
-  <div id="email-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none p-4 rounded-2xl bg-zinc-900 border border-brand-500/30 text-white shadow-2xl flex items-center gap-3">
-    <div class="p-2 rounded-xl bg-brand-500/10 text-brand-400">
-      <i data-lucide="mail-check" class="w-5 h-5"></i>
-    </div>
-    <div>
-      <h5 class="text-xs font-bold">Abriendo cliente de correo...</h5>
-      <p class="text-[11px] text-zinc-400">Dirección copiada: <span class="text-brand-400 font-medium">restrejcjob@gmail.com</span></p>
-    </div>
-  </div>
-
-  <script>
+    // Email click handler with clipboard fallback and toast
     function handleEmailClick(e) {
-      // Copy to clipboard as reliable backup
       navigator.clipboard.writeText('restrejcjob@gmail.com').catch(()=>{});
-      
       const toast = document.getElementById('email-toast');
       if (toast) {
-        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-24', 'opacity-0');
         setTimeout(() => {
-          toast.classList.add('translate-y-20', 'opacity-0');
+          toast.classList.add('translate-y-24', 'opacity-0');
         }, 4000);
       }
     }
